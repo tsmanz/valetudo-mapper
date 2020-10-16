@@ -8,7 +8,7 @@ Since both CPU and Memory are limited on the robot, PNG generation for third-par
 
 Just run this via `npm start` on a host with enough resources. There's also a dockerfile and automated builds available on [Docker Hub](https://hub.docker.com/r/rand256/valetudo-mapper).
 
-To override the configuration inside the docker container, map it to `/app/config.json`. It looks like this:
+To override the configuration inside the docker container, map it to `/app/config.json`. It may look like this:
 
 ```
 {
@@ -49,7 +49,8 @@ To override the configuration inside the docker container, map it to `/app/confi
             "crop_x1": 30,
             "crop_y1": 70,
             "crop_x2": 440,
-            "crop_y2": 440
+            "crop_y2": 440,
+            "rotate": 90
         },
         "webserver": {
             "enabled": false,
@@ -68,7 +69,3 @@ Static raster image looks worse than browser generated via HTML Canvas but will 
 
 ### FHEM, ioBroker, etc
 If you set `webserver.enabled` to `true`, the map PNG will be available at `http://host:port/api/map/image`
-
-### TheLastProject/lovelace-valetudo-map-card
-To make Valetudo RE compatible with `lovelace-valetudo-map-card` project, enable `publishMapData` option and
-set map sensor source in HA to `topicPrefix/identifier/map_data_parsed` (i.e. `valetudo/rockrobo/map_data_parsed`).
